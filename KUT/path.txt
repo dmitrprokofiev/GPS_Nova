@@ -1,0 +1,3 @@
+general:/home/dmitry/Загрузки/xxx.xlsx
+dut:/home/dmitry/Загрузки/dut.xlsx
+result:/home/dmitry/PycharmProjects/Murmansk_Report_Pandas/KUT/result.xlsx
