@@ -31,7 +31,7 @@ def parent_process():
     parent_report = pd.read_excel(path['general'])
     parent_report = parent_report.drop([0, 1, 2, 3, 4, 5, 6, 7])  # 'Unnamed: 1'
     parent_report = parent_report.loc[parent_report['Unnamed: 2'] != "-"] # удалить итоговые значения
-    parent_report = parent_report.groupby(["Unnamed: 1"])["Unnamed: 5"].sum().reset_index() #индексируем полученный результат
+    parent_report = parent_report.groupby(["Unnamed: 0", "Unnamed: 1"])["Unnamed: 5"].sum().reset_index() #индексируем полученный результат
     parent_report["Unnamed: 1"] = [i.rstrip(" ") for i in parent_report["Unnamed: 1"]]
     return parent_report
 
@@ -52,11 +52,11 @@ def last_process():
 def pivot():
     result = parent_process().merge(last_process(), left_on="Unnamed: 1", right_on="name", how='left')
     result.drop(["name"], axis=1, inplace=True)
-    result.columns = ["Т/С", "Объем, л. по УСС", "Дата", "Объем л. ДУТ"]
-    result = result[["Т/С", "Дата", "Объем, л. по УСС", "Объем л. ДУТ"]] #меняем столбцы местами
+    result.columns = ["Топливозаправщик", "Т/С", "Объем по КУТ, л", "Дата", "Объем по ДУТ, л"]
+    result = result[["Топливозаправщик", "Т/С", "Дата", "Объем по КУТ, л", "Объем по ДУТ, л"]] #меняем столбцы местами
     result = result.fillna(0)
-    result["Разница, л."] = result["Объем, л. по УСС"] - result["Объем л. ДУТ"]
-    result["Разница, %"] = (result["Разница, л."] * 100) / result["Объем, л. по УСС"]
+    result["Разница, л."] = result["Объем по КУТ, л"] - result["Объем по ДУТ, л"]
+    result["Разница, %"] = (result["Разница, л."] * 100) / result["Объем по КУТ, л"]
     result = result.fillna(0)
     result["Разница, %"] = result["Разница, %"].astype(int)
     #ставим дату в ячейки с нулевым значением
