@@ -1,10 +1,13 @@
 import pandas as pd
 import time
+import PySimpleGUI as sg
 
-#TODO дописать код под шаблон
+#TODO добавить сетку в файл
+#TODO осуществить определение АБ или УМ в столбце
 #TODO выкинуть код на репозиторий
-#TODO сделать возможным обработку сразу нескольких АТЗ в файле
+#TODO сделать возможность сопоставление по дате
 #TODO сводный отчет за один день вместо двух
+#TODO компиляция PyInstaller
 
 # path = { "general" : "/home/dmitry/PycharmProjects/Murmansk_Report_Pandas/KUT/general_table.xlsx",
 #          "dut" : "/home/dmitry/PycharmProjects/Murmansk_Report_Pandas/KUT/dut_table.xlsx",
@@ -25,7 +28,9 @@ def file() -> object: #открыть txt-файл, записать содер�
     path["general"] = path["general"].replace("xxx", atz)
     return path
 
+
 path = file()
+
 
 def parent_process():
     parent_report = pd.read_excel(path['general'])
@@ -65,6 +70,7 @@ def pivot():
     date.discard(0)
     insert_date = date.pop()
     result.loc[(result["Дата"] == 0, "Дата")] = insert_date
+    result["Комментарии"] = ""
     return result
 
 
@@ -74,3 +80,4 @@ pivot().to_excel('result.xlsx')
 # print(pivot().to_excel('result.xlsx'))
 # print(pivot().to_excel("itog.xlsx"))
 # print(pivot())
+

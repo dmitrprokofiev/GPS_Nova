@@ -1,6 +1,6 @@
 import pandas as pd
 
-#TODO добавить path
+#TODO добавить path  и он уже добавлен
 
 spisok = []
 
@@ -128,4 +128,4 @@ def check():
 a = print_report() #сформировать итоговый отчет
 b = table_error() # показать расхождения
 
-print(b)
+# print(b)
