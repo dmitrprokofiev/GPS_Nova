@@ -73,10 +73,12 @@ def pivot():
     result["Комментарии"] = ""
     return result
 
+def groups():
+
+    pass
 
 
-
-pivot().to_excel('result.xlsx')
+# pivot().to_excel('result.xlsx')
 # print(pivot().to_excel('result.xlsx'))
 # print(pivot().to_excel("itog.xlsx"))
 # print(pivot())

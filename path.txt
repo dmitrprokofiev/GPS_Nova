@@ -1,3 +1,5 @@
-general:/home/dmitry/PycharmProjects/Murmansk_Report_Pandas/KUT/general_table2.xlsx
-dut:/home/dmitry/PycharmProjects/Murmansk_Report_Pandas/KUT/dut_table.xlsx
-result:/home/dmitry/PycharmProjects/Murmansk_Report_Pandas/KUT/result.xlsx
+general:/home/dmitry/Загрузки/xxx.xlsx
+dut:/home/dmitry/Загрузки/dut.xlsx
+data:/home/dmitry/Загрузки/data.xlsx
+data_auto:/home/dmitry/Загрузки/data_auto.xlsx
+data_um:/home/dmitry/Загрузки/data_um.xlsx
