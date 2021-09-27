@@ -10,8 +10,8 @@ token_2 = '1'
 head = {'Authorization' : f'JWT {token}'}
 
 params = {
-  "login": "nova_monitoring",
-  "password": "hHat4YFN"
+  "login": "***",
+  "password": "***"
 }
 
 datas = {
