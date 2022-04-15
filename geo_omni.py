@@ -97,23 +97,7 @@ def iter_zapros():
             new_data[i['name']] = i['fuel']['refuelling']/10
     return new_data
 
-
-def proverka(): #TODO разделить проверку на циклы на основе бинарного поиска по 4 запроса
-    new_data = {}
-    ban_id = []
-    for auto in mysql_terminals.bd[:100]:
-        try:
-            zapravki = f"/ls/api/v1/reports/statistics?timeBegin={times_omni()[0]}&timeEnd={times_omni()[1]}&dataGroups=%5Bfuel%5D&vehicles=%5B{auto}%5D&"
-            data = requests.get(url=myurl + zapravki, headers=post_head_omni()).json()
-            data = data['data']["vehicleDataList"]
-            for i in data:
-                new_data[i['name']] = i['fuel']['refuelling']
-        except:
-            ban_id.append(auto)
-    return ban_id
-
-
-def proverka_new():
+def proverka():
     ban_id = []
     x = 0
     y = x + 382
